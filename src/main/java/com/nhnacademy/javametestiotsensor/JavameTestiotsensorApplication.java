@@ -14,7 +14,6 @@ public class JavameTestiotsensorApplication {
         SpringApplication.run(JavameTestiotsensorApplication.class, args);
     }
 
-    // CORS 설정 - 프론트엔드와의 통신을 위해
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
