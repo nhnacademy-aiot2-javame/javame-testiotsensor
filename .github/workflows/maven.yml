@@ -40,7 +40,7 @@ jobs:
           username: ${{ secrets.SSH_ID }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: "test/*.jar"
+          source: "target/*.jar"
           target: "~/test"
           rm: false
 
