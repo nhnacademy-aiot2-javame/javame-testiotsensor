@@ -13,7 +13,7 @@ public class JavameTestiotsensorApplication {
     public static void main(String[] args) {
         SpringApplication.run(JavameTestiotsensorApplication.class, args);
     }
-
+//
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
