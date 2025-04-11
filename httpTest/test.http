@@ -1,0 +1,11 @@
+### 기본 URL 설정
+@baseUrl = http://localhost:10257
+
+### 모든 센서 데이터 조회
+
+GET {{baseUrl}}/api/sensors
+
+### 서버환경에서 시험
+GET http://javame.live:10257/api/sensors
+
+###
