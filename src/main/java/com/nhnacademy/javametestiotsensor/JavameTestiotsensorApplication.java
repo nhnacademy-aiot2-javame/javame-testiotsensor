@@ -20,7 +20,7 @@ public class JavameTestiotsensorApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:10251") // 프론트엔드 서버 주소
+                        .allowedOrigins("http://javame.live")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowCredentials(true);
             }
