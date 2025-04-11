@@ -3,6 +3,7 @@ package com.nhnacademy.javametestiotsensor.repository;
 
 import com.nhnacademy.javametestiotsensor.dto.SensorStatistics;
 import com.nhnacademy.javametestiotsensor.model.IotSensorData;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -52,9 +53,10 @@ public interface IotSensorRepository extends JpaRepository<IotSensorData, Long> 
             @Param("endTime") LocalDateTime endTime);
 
     // 최근 데이터 조회 (차트용)
-    @Query(value = "SELECT s FROM IotSensorData s WHERE s.sensorType = :sensorType ORDER BY s.receivedAt DESC LIMIT 10",
-            nativeQuery = true)
-    List<IotSensorData> findRecentBySensorType(@Param("sensorType") String sensorType);
+    @Query(value = "SELECT s FROM IotSensorData s WHERE s.sensorType = :sensorType ORDER BY s.receivedAt DESC",
+            nativeQuery = false)
+    List<IotSensorData> findRecentBySensorType(@Param("sensorType") String sensorType, Pageable pageable);
+
 
     // 모든 센서 타입 목록 조회
     @Query("SELECT DISTINCT s.sensorType FROM IotSensorData s")

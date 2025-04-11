@@ -7,6 +7,9 @@ import com.nhnacademy.javametestiotsensor.dto.SensorStatistics;
 import com.nhnacademy.javametestiotsensor.model.IotSensorData;
 import com.nhnacademy.javametestiotsensor.repository.IotSensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -93,7 +96,8 @@ public class IotSensorService {
 
     // 특정 센서 타입의 최근 데이터로 차트 데이터 생성
     public ChartData getChartDataForSensorType(String sensorType) {
-        List<IotSensorData> recentData = sensorRepository.findRecentBySensorType(sensorType);
+        Pageable topTen = PageRequest.of(0, 10, Sort.by("receivedAt").descending());
+        List<IotSensorData> recentData = sensorRepository.findRecentBySensorType(sensorType, topTen);
 
         List<String> labels = recentData.stream()
                 .map(data -> data.getReceivedAt().format(DateTimeFormatter.ofPattern("MM-dd HH:mm")))
