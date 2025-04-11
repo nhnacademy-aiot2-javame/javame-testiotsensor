@@ -20,7 +20,7 @@ public class JavameTestiotsensorApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://javame.live")
+                        .allowedOrigins("https://javame.live")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowCredentials(true);
             }
